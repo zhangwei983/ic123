@@ -18,6 +18,8 @@ jobs:
 
     - name: Build
       run: |
+        sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+        dfx --version
         cd docusaurus
         npm install
         yarn build
