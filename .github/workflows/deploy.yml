@@ -31,6 +31,7 @@ jobs:
     - name: Deploy
       run: |
         rm canister_ids.json
+        echo '{ "ic123_frontend": { "ic": "gzdkp-wyaaa-aaaan-qd5la-cai" } }' > canister_ids.json
         dfx start --background --clean
-        dfx deploy ic123_frontend --specified-id=gzdkp-wyaaa-aaaan-qd5la-cai --network=ic
+        dfx deploy --network=ic
         
