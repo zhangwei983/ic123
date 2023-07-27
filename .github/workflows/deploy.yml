@@ -27,7 +27,7 @@ jobs:
         cd docusaurus
         npm install
         yarn build
-        cd..
+        cd ..
     - name: Deploy
       run: |
         rm canister_ids.json
