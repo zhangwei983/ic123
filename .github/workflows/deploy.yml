@@ -15,8 +15,8 @@ jobs:
     - name: Install DFX
       run: |
         sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-        echo "$ACTION_PEM_FILE"
-        echo "$ACTION_PEM_FILE" > identity.pem
+        echo "${{secrets.ACTION_PEM_FILE}}"
+        echo "${{secrets.ACTION_PEM_FILE}}" > identity.pem
         chmod 400 identity.pem
         cat identity.pem
         mkdir -p ~/.config/dfx/identity/ic123
