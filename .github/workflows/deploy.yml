@@ -17,7 +17,8 @@ jobs:
         sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
         echo "$ACTION_PEM_FILE" > identity.pem
         chmod 400 identity.pem
-        mkdir ~/.config/dfx/identity/ic123
+        cat identity.pem
+        mkdir -p ~/.config/dfx/identity/ic123
         mv identity.pem ~/.config/dfx/identity/test/identity.pem
         dfx identity list
     - uses: actions/setup-node@v3
