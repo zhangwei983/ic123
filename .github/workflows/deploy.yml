@@ -12,14 +12,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install DFX
+      run: |
+        sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+        echo "$ACTION_PEM_FILE" > identity.pem
+        chmod 400 identity.pem
+        mkdir ~/.config/dfx/identity/ic123
+        mv identity.pem ~/.config/dfx/identity/test/identity.pem
+        dfx identity list
     - uses: actions/setup-node@v3
       with:
         node-version: '16'
-
     - name: Build
       run: |
-        sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-        dfx --version
         cd docusaurus
         npm install
         yarn build
