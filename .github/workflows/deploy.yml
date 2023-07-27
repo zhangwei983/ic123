@@ -18,9 +18,9 @@ jobs:
         echo "${{secrets.ACTION_PEM_FILE}}" > identity.pem
         chmod 400 identity.pem
         cat identity.pem
-        mkdir -p ~/.config/dfx/identity/ic123
-        mv identity.pem ~/.config/dfx/identity/ic123/identity.pem
-        dfx identity list
+        mkdir -p ~/.config/dfx/identity/default
+        mv identity.pem ~/.config/dfx/identity/default/identity.pem
+        dfx identity whoami
     - uses: actions/setup-node@v3
       with:
         node-version: '16'
