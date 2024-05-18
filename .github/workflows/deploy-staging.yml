@@ -32,7 +32,7 @@ jobs:
         dfx cache install
 
         # Prepare identity.
-        echo "${{secrets.WEIHAILU}}" > identity.pem
+        echo "${{secrets.ACTION_PEM_FILE}}" > identity.pem
         chmod 400 identity.pem
         mkdir -p ~/.config/dfx/identity/default
         mv identity.pem ~/.config/dfx/identity/default/identity.pem
@@ -46,11 +46,3 @@ jobs:
         npm install
         npm run build
         cd ..
-    - name: Deploy
-      run: |
-        rm canister_ids.json
-        echo '{ "ic123_frontend": { "ic": "${{ vars.STAGING_CANISTER_ID }}" } }' > canister_ids.json
-        dfx start --background --clean
-        dfx deploy --network=ic
-    - name: Summarize
-      run: echo 'https://${{ vars.STAGING_CANISTER_ID }}.icp0.io' >> $GITHUB_STEP_SUMMARY
